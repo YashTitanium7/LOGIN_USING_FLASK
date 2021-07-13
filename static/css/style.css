@@ -1,10 +1,14 @@
-.wrapperX {
-  width: 40%;
+a {
+  text-decoration: none;
 }
 
-body{
+.wrapperX {
+  width: 40vw;
+}
+
+.container{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
 }

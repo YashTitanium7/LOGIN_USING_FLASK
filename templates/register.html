@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Register - Titanium</title>
+{% endblock title %}
+
+
+{% block navButton %}
+<a href="/login">
+  <div class="d-flex">
+    <button class="btn btn-outline-dark"">Login</button>
+  </div>
+</a>
+{% endblock navButton %}
+
+{% block body %}
+    
+<!-- wrapper starts here -->
+<div class=" container">
+    <div class="wrapperX">
+      <form action="#" method="post">
+        <h1 class="display-1 my-3">Register</h1>
+        <div class="form-floating mb-3">
+          <input name="name" type="text" class="form-control" id="floatingInput" placeholder="name">
+          <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-outline-dark my-3">
+      </form>
+    </div>
+</div>
+
+
+{% endblock body %}
