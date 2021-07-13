@@ -1,4 +1,5 @@
 *.code-workspace
 testing.*
 *.log
-
+__pycache__
+*.db
