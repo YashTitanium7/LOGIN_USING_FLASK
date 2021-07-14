@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>Success </title>
+{% endblock title %}
+
+{% block navButton %}
+<a href="/login">
+  <div class="d-flex">
+    <button class="btn btn-outline-dark"">Login</button>
+  </div>
+</a>
+{% endblock navButton %}
+
+{% block body %}
+  <div class="container">
+    <h1>Hi <b>{{ name }}!</b> Your email is <b>{{ email }}</b> and your hashed passowrd is <b>{{ password }}</b>.</h1>
+  </div>
+{% endblock body %}
