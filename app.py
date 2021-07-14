@@ -1,6 +1,8 @@
-from flask import Flask, app, request, redirect
+from flask import Flask, app, request, redirect, flash
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
+
+import bcrypt
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///loginDatabase.db"
@@ -23,22 +25,33 @@ def home():
 def login():
   if request.method == 'POST':
     email = request.form.get('email')
-    password = request.form.get('password')
-    password = hash(password)
-    return render_template('testing.html', email=email, password=password)
-  return render_template('login.html')
+    password = request.form.get('password').encode("utf-8")
+    try:
+      ac = Register.query.filter_by(email=email).first()
+      print(type(ac))
+      name = ac.name
+      saved_password = ac.password
+      if bcrypt.checkpw(password, saved_password):
+        return render_template('loggedin.html', name=name)
+      else:
+        return "<h1>OOPS!!....Heads up!....</br>WRONG CREDINTIALS.</h1>"
+    except:
+      return "<h1>OOPS!!.....</br>Somthing went wrong.</h1>"
+      pass
+  else:
+    return render_template('login.html')
 
 @app.route("/reg", methods=['POST', 'GET'])
 def reg():
   if request.method == 'POST':
     name = request.form.get('name')
     email = request.form.get('email')
-    password = request.form.get('password')
-    password = hash(password)
-    ACs = Register(name=name, email=email, password=password)
+    password = request.form.get('password').encode("utf-8")
+    hashed_password = bcrypt.hashpw(password, bcrypt.gensalt())
+    ACs = Register(name=name, email=email, password=hashed_password)
     db.session.add(ACs)
     db.session.commit()
-    return render_template('testing.html', name=name, email=email, password=password)
+    return render_template('registered.html', name=name, email=email, password=password)
   return render_template('register.html')
 
 if __name__ == '__main__':
