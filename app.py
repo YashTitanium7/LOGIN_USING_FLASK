@@ -36,7 +36,6 @@ def login():
       else:
         return "<h1>OOPS!!....Heads up!....</br>WRONG CREDINTIALS.</h1>"
     except:
-      return "<h1>OOPS!!.....</br>Somthing went wrong.</h1>"
       pass
   else:
     return render_template('login.html')
