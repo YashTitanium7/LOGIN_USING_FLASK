@@ -50,7 +50,7 @@ def reg():
     ACs = Register(name=name, email=email, password=hashed_password)
     db.session.add(ACs)
     db.session.commit()
-    return render_template('registered.html', name=name, email=email, password=password)
+    return render_template('registered.html', name=name, email=email, password=hashed_password)
   return render_template('register.html')
 
 if __name__ == '__main__':
