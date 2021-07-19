@@ -3,4 +3,3 @@ testing.*
 *.log
 __pycache__
 *.db
-demo.*
